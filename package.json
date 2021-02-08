@@ -1,0 +1,29 @@
+{
+  "name": "homebridge-yr",
+  "version": "1.0.0",
+  "description": "A homebridge plugin that displays temperature",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "author": {
+    "name": "Tobias Jeppesen"
+},
+"keywords": [
+    "homebridge-plugin",
+    "homebridge",
+    "homekit"
+],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.14.25",
+    "homebridge": "^1.1.7",
+    "typescript": "^4.1.3"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=1.0.0"
+  },
+  "files": ["index.js"]
+}
