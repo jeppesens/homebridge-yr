@@ -16,7 +16,6 @@ class YrTemperatureSensorAccessory implements AccessoryPlugin {
     private set forecast(v) {
         this._forecast = v
         this.log.debug(`Setting cached temp to ${this.temperature}°C`);
-        this.service.setCharacteristic( this.api.hap.Characteristic.CurrentTemperature, this.temperature );
     }
     private get forecast(): Array<{date: Date, air_temperature: number}> {
         return this._forecast;
@@ -24,6 +23,7 @@ class YrTemperatureSensorAccessory implements AccessoryPlugin {
     private get temperature(): number {
         const selected = this._forecast.sort((a, b) => new Date().getTime() - b.date.getTime() > new Date().getTime() - a.date.getTime() ? 1 : -1)[0];
         this.log.debug(`Selected ${selected.date} for forecast with temperature ${selected.air_temperature}`);
+        this.service.setCharacteristic( this.api.hap.Characteristic.CurrentTemperature, selected.air_temperature );
         return selected.air_temperature;
     }
     private coordinates: { lat: number, lon: number };
